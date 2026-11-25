@@ -8,4 +8,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 5000
 
-ENV ["python3", "app.py"]
+ENTRYPOINT ["python3", "app.py"]
