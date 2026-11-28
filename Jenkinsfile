@@ -35,4 +35,13 @@ pipeline{
 
         }
     }
+    post{
+        success{
+            echo "Build $TAG successful - Image $IMAGE:$TAG uploaded to Docker hub"
+            sh "docker rmi $IMAGE:$TAG $IMAGE:latest | echo 'Image clenaup - Image not found locally'"
+        }
+        failure{
+            echo "Build Failed - $IMAGE:$TAG kept locally for debuggings "
+        }
+    }
 }
