@@ -16,7 +16,7 @@ pipeline{
                 sh "docker build -t $IMAGE:$TAG ."
             }
         }
-        stage('Scan with Tricy'){
+        stage('Scan with Trivy'){
             steps{
                 sh "TMPDIR=/tempdir trivy image --severity HIGH,CRITICAL --exit-code 1 $IMAGE:$TAG"
             }
